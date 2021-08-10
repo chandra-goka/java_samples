@@ -94,12 +94,10 @@ public class SortSubLists {
         System.out.println(demoSubGroup);
         System.out.println("After Sorting..");
         List<DemoSubGroup> sorted = groups.stream()
-                .map(f -> new DemoSubGroup(f.getId(), f.getPricing(),
-                        f.getNames().stream().filter(data -> data.getLanguageCode() == 1).sorted(Comparator.comparing(SubGroupName::getLanguageName))
+                .map(ds -> new DemoSubGroup(ds.getId(), ds.getPricing(),
+                        ds.getNames().stream().filter(data -> data.getLanguageCode() == 1).sorted(Comparator.comparing(SubGroupName::getLanguageName))
                         .collect(Collectors.toSet())))
                 .sorted().collect(Collectors.toList());
-
         sorted.forEach(System.out::println);
-
     }
 }
